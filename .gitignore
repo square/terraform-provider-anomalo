@@ -1,0 +1,5 @@
+**/examples/*
+**.tfstate
+**/provider.tf
+
+
