@@ -6,7 +6,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/hashicorp/terraform-provider-tfanomalo/tf_anomalo"
+	"github.com/squareup/terraform-provider-anomalo/anomalo"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website
@@ -36,11 +36,11 @@ func main() {
 
 	opts := providerserver.ServeOpts{
 		// TODO: Update this string with the published name of your provider.
-		Address: "registry.terraform.io/square/tfanomalo", // This should be set in .terraformrc for local development.
+		Address: "squareup.com/tfanomalo/anomalo", // This should be set in .terraformrc for local development.
 		Debug:   debug,
 	}
 
-	err := providerserver.Serve(context.Background(), tf_anomalo.New(version), opts)
+	err := providerserver.Serve(context.Background(), anomalo.New(version), opts)
 
 	if err != nil {
 		log.Fatal(err.Error())

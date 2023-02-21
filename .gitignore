@@ -1,5 +1,2 @@
-**/examples/*
 **.tfstate
-**/provider.tf
-
-
+**/env/*

@@ -1,0 +1,1 @@
+terraform import anomalo_table.table_name table_id
