@@ -1,0 +1,1 @@
+terraform import anomalo_check.check_name table_id,check_id
