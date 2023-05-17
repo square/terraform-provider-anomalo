@@ -37,8 +37,7 @@ To use the provider, include it in your Terraform configuration and run `terrafo
 terraform {
   required_providers {
     anomalo = {
-      source = "" TODO
-      version = "" TODO
+      source = "square/anomalo" # TODO verify
     }
   }
 }
@@ -59,8 +58,7 @@ Copy the following terraform code into a new or existing terraform directory, re
 terraform {
   required_providers {
     anomalo = {
-      source = "" # TODO
-      version = "" # TODO
+      source = "square/anomalo" # TODO
     }
   }
 }

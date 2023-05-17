@@ -37,10 +37,10 @@ dev_overrides {
 1. Run `go install .` Terraform will now use your local code.
 
 ### Building
-1. Run `go build`
-2. There will be an executable in the root directory with the same name as the repository
-3. See https://www.digitalocean.com/community/tutorials/how-to-build-go-executables-for-multiple-platforms-on-ubuntu-16-04 for targeting other OSs and Architectures
-(TODO this should change once you implement github-hooks based builds)
+1. Run `git tag v1.x.x` based on the most recent release in github.
+2. Run `git push origin v1.x.x` 
+3. A github actions workflow should start
+4. Anything for registry? # TODO
 
 ### Generating Documentation
 Use [terraform-plugin-docs](https://github.com/hashicorp/terraform-plugin-docs) to keep documentation in sync with plugin code.
