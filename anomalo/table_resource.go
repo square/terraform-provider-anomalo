@@ -69,7 +69,7 @@ func (r *tableResource) Metadata(_ context.Context, req resource.MetadataRequest
 // Schema defines the schema for the resource.
 func (r *tableResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		Description: "An Anomalo table's configuration. Maps closely to the Anomalo API for tables. See " +
+		Description: "An Anomalo table's configuration. Maps closely to the Anomalo API for `configure_table`. See " +
 			"your API documentation for more information on attributes.\n",
 		Attributes: map[string]schema.Attribute{
 			"table_id": schema.Int64Attribute{
@@ -101,7 +101,7 @@ func (r *tableResource) Schema(_ context.Context, _ resource.SchemaRequest, resp
 					),
 				},
 				Description: "How often checks should execute on this table. Exclude this attribute (or equivalently, " +
-					"set to null) to de-configure and turn off checks for the table. Acceptable values include null, " +
+					"set to null) to turn off checks for the table. Acceptable values include null, " +
 					"\"daily\", and \"daily_freshness_gated\"",
 			},
 			"check_cadence_run_at_duration": schema.StringAttribute{
@@ -113,9 +113,9 @@ func (r *tableResource) Schema(_ context.Context, _ resource.SchemaRequest, resp
 			},
 			"notification_channel_id": schema.Int64Attribute{
 				Required: true,
-				Description: "Notification channel that you would like to send notifications from this table to. " +
-					"Can be used with the NotificationChannel Datasource, " +
-					"ex anomalo_notification_channel.team_slack_channel.id",
+				Description: "Notification channel that this table's alerts should be sent to. " +
+					"Can be used with the `NotificationChannel` data-source, " +
+					"ex `anomalo_notification_channel.team_slack_channel.id`",
 			},
 			"definition": schema.StringAttribute{
 				Optional: true,

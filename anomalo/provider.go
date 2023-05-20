@@ -54,12 +54,12 @@ func (p Provider) Schema(_ context.Context, _ provider.SchemaRequest, resp *prov
 		Attributes: map[string]schema.Attribute{
 			"host": schema.StringAttribute{
 				Optional:    true,
-				Description: "Your anomalo API host. Ex https://anomalo.mycompany.com",
+				Description: "Your anomalo API host. Ex `https://anomalo.mycompany.com`",
 			},
 			"token": schema.StringAttribute{
 				Optional:    true,
 				Sensitive:   true,
-				Description: "Your anomalo API token. Ex j1bD56vY8L0Q9Ztf%nMxJ",
+				Description: "Your anomalo API token. Ex `j1ThisIsaFake%tokenMxJ`",
 			},
 		},
 	}

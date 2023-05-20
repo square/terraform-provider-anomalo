@@ -2,12 +2,12 @@
 page_title: "anomalo_check Resource - terraform-provider-anomalo"
 subcategory: ""
 description: |-
-An Anomalo check. Closely maps to the check object in the Anomalo API. Note that updating system checks (checks with negative IDs) is not supported by the Anomalo API and thus is not supported by this resource.
+An Anomalo check. Closely maps to the check object in the Anomalo API. Updating system checks (checks with negative IDs) is not supported by the Anomalo API and thus is not supported by this resource.
 ---
 
 # anomalo_check (Resource)
 
-An Anomalo check. Closely maps to the check object in the Anomalo API. Note that updating system checks (checks with negative IDs) is not supported by the Anomalo API and thus is not supported by this resource.
+An Anomalo check. Closely maps to the check object in the Anomalo API. Updating system checks (checks with negative IDs) is not supported by the Anomalo API and thus is not supported by this resource.
 
 ## Example Usage
 
@@ -33,13 +33,13 @@ resource "anomalo_check" "VariationsGeneratedRecently" {
 
 ### Required
 
-- `check_type` (String) The type of check. Valid values are available in the Anomalo API documentation for CreateChecks.
-- `params` (Map of String) A map of parameters for the provided check type. Valid values are available in the Anomalo API documentation for CreateChecks. Acceptable values differ by check type.
+- `check_type` (String) The type of check. Valid values are available in the Anomalo API documentation for `create_check`.
+- `params` (Map of String) A map of parameters for the provided check type. Valid values are available in the Anomalo API documentation for `create_check`. Acceptable values differ by check type.
 
 ### Optional
 
-- `check_static_id` (Number) A check ID that persists through updates. The Anomalo API implements check updates as deletion + creation. It does not support direct updates. This provider abstracts that detail and supports referencing checks strictly by their static_check_id. This makes the resource behave like a typical HTTP resource.
-- `table_id` (Number) The ID of the table that this check belongs to. This can be specified by referencingthe resource object, ex `anomalo_table.<resource_name>.table_id`. It should not be changed aftercreation.
+- `check_static_id` (Number) The check ID, persists through updates. Implementation Detail: The Anomalo API implements check updates as a deletion of the old check + creation of a new one. When using this provider, you can ignore that detail by using `static_check_id`. This makes the resource behave like a typical HTTP resource.
+- `table_id` (Number) The ID of the table that this check belongs to. This can be specified by referencing the resource object, ex `anomalo_table.<resource_name>.table_id`. It should not be changed after creation.
 
 
 

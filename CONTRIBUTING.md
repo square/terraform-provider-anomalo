@@ -31,7 +31,7 @@ Please report issues in Github issues.
 3. Add the following to your `~/.terraformrc` file to instruct Terraform to look at local files for providers with this name:
 ```shell
 dev_overrides {
-   "squareup.com/custom/anomalo" = "/Users/jawilliams/go/bin" # TODO update this after deciding on a package name in terraform registry
+   "square/anomalo" = "/Users/jake/go/bin" # TODO update this after deciding on a package name in terraform registry
 }
 ```
 1. Run `go install .` Terraform will now use your local code.

@@ -2,13 +2,13 @@
 page_title: "anomalo_table Resource - terraform-provider-anomalo"
 subcategory: ""
 description: |-
-An Anomalo table's configuration. Maps closely to the Anomalo API for tables. See your API documentation for more information on attributes.
+An Anomalo table's configuration. Maps closely to the Anomalo API for `configure_table`. See your API documentation for more information on attributes.
 
 ---
 
 # anomalo_table (Resource)
 
-An Anomalo table's configuration. Maps closely to the Anomalo API for tables. See your API documentation for more information on attributes.
+An Anomalo table's configuration. Maps closely to the Anomalo API for `configure_table`. See your API documentation for more information on attributes.
 
 
 ## Example Usage
@@ -29,14 +29,14 @@ resource "anomalo_table" "VariationsTable" {
 
 ### Required
 
-- `notification_channel_id` (Number) Notification channel that you would like to send notifications from this table to. Can be used with the NotificationChannel Datasource, ex anomalo_notification_channel.team_slack_channel.id
+- `notification_channel_id` (Number) Notification channel that this table's alerts should be sent to. Can be used with the `NotificationChannel` data-source, ex `anomalo_notification_channel.team_slack_channel.id`
 - `table_name` (String) The fully qualified name of the table, including the warehouse. Ex warehouse_name.schema_name.table_name
 
 ### Optional
 
 - `always_alert_on_errors` (Boolean)
 - `check_cadence_run_at_duration` (String)
-- `check_cadence_type` (String) How often checks should execute on this table. Exclude this attribute (or equivalently, set to null) to de-configure and turn off checks for the table. Acceptable values include null, "daily", and "daily_freshness_gated"
+- `check_cadence_type` (String) How often checks should execute on this table. Exclude this attribute (or equivalently, set to null) to turn off checks for the table. Acceptable values include null, "daily", and "daily_freshness_gated"
 - `definition` (String)
 - `fresh_after` (String)
 - `interval_skip_expr` (String)
@@ -54,6 +54,6 @@ resource "anomalo_table" "VariationsTable" {
 Import is supported using the following syntax:
 
 ```shell
-terraform import anomalo_table.table_name table_id
+terraform import anomalo_table.table_name warehouse_name.schema_name.table_name
 ```
 

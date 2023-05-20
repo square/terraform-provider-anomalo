@@ -25,7 +25,7 @@ data "anomalo_notification_channel" "alert_channel" {
 ### Required
 
 - `channel_type` (String) The type of notification channel. One of "slack" "msteams" "pagerduty" "email" "email_all"
-- `name` (String) The name of the notification channel. For example, "@squareJake". Because of a limitation in the Anomalo API, this may not work if the name is a substring of multiple channels (within the same `channel_type`)
+- `name` (String) The name of the notification channel. For example, "@squareJake". Because of a limitation in the Anomalo API, this may not work if the name is a substring of multiple channels (within the same `channel_type`). Ex if you have channels `#anomalo-alerts` and `anomalo-alerts-important`, it's not possible to use this channel to reference `#anomalo-alerts`. Instead, grab the ID directly from the Anomalo UI or API and store it in a variable.
 
 ### Read-Only
 

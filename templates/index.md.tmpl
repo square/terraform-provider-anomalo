@@ -1,23 +1,21 @@
 # Anomalo Terraform Provider
 
-A Terraform provider that allows you to manage [Anomalo](https://www.anomalo.com/) resources in bulk.
+A Terraform provider that allows you to manage [Anomalo](https://docs.anomalo.com/introduction/readme) resources in bulk.
 
 This plugin has benefits over other ways to manage your Anomalo setup. Namely:
 
 - Version controlled, declarative configuration
-- Bulk actions (ex with `for_each`)
+- Bulk actions (ie. with `for_each` and variables)
 - Line-by-line diffs
-- Collaboration, via cloud based state and resource locks to prevent overwriting a teammate's work
 - Variables
   - ex. update the notification time for all checks with a single variable change
-- Use the same (or similar) check across tables & environments
-- Integrate with your existing workflow
+- Collaboration - prevent overwriting & conflicts (via [cloud-based state management](https://developer.hashicorp.com/terraform/language/state/remote))
+- Bulk update or copy checks across tables & environments
+- Integrate with your existing CICD workflow
 
-The biggest contributions of this provider are the Check and Table resources. These
-correspond to their counterparts in the Anomalo API docs. Those docs
-should answer most questions you have about resources and attributes.
+The biggest contributions of this provider are the Check and Table resources. These correspond to their counterparts in the Anomalo API docs. Those docs should answer most questions you have about resources and attributes.
 
-In some places the provider has a different API, in cases where simplification made management with Terraform easier. Documentation highlights any differences between the two.
+In some places the provider API differs from Anomalo to conform to Terraform best practices & expectations. This documentation highlights any differences between the two.
 
 See the navigation bar for more information on the resources available.
 

@@ -1,8 +1,7 @@
 terraform {
   required_providers {
     anomalo = {
-      source = "squareup.com/custom/anomalo"
-      version = "1.0.2"
+      source = "square/anomalo"
     }
   }
 }

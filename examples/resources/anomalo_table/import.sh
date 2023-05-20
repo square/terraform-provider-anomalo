@@ -1,1 +1,1 @@
-terraform import anomalo_table.table_name table_id
+terraform import anomalo_table.table_name warehouse_name.schema_name.table_name

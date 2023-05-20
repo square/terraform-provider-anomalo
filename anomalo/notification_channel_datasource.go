@@ -56,7 +56,7 @@ func (r *notificationChannelDataSource) Schema(_ context.Context, _ datasource.S
 			},
 			"name": schema.StringAttribute{
 				Required:    true,
-				Description: "The name of the notification channel. For example, \"@squareJake\". Because of a limitation in the Anomalo API, this may not work if the name is a substring of multiple channels (within the same `channel_type`)",
+				Description: "The name of the notification channel. For example, \"@squareJake\". Because of a limitation in the Anomalo API, this may not work if the name is a substring of multiple channels (within the same `channel_type`). Ex if you have channels `#anomalo-alerts` and `anomalo-alerts-important`, it's not possible to use this channel to reference `#anomalo-alerts`. Instead, grab the ID directly from the Anomalo UI or API and store it in a variable.",
 			},
 			"id": schema.Int64Attribute{
 				Computed:    true,
