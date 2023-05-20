@@ -35,7 +35,6 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		// TODO: Update this string with the published name of your provider.
 		Address: "registry.terraform.io/square/anomalo", // This should be set in .terraformrc for local development.
 		Debug:   debug,
 	}

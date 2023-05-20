@@ -12,7 +12,7 @@ Benefits:
 - Use the same (or similar) check across tables & environments
 - Integrate with your existing workflow
 
-Full provider documentation is here. (TODO link)
+Full provider documentation is [here](https://registry.terraform.io/providers/square/anomalo/latest/docs).
 See [`example.tf`](https://github.com/square/terraform-provider-anomalo/blob/master/examples/example.tf) for a sample configuration.
 
 ## Table of Contents
@@ -37,7 +37,7 @@ To use the provider, include it in your Terraform configuration and run `terrafo
 terraform {
   required_providers {
     anomalo = {
-      source = "square/anomalo" # TODO verify
+      source = "square/anomalo"
     }
   }
 }
@@ -58,7 +58,7 @@ Copy the following terraform code into a new or existing terraform directory, re
 terraform {
   required_providers {
     anomalo = {
-      source = "square/anomalo" # TODO
+      source = "square/anomalo"
     }
   }
 }
@@ -99,7 +99,7 @@ See `examples/example.tf` [here](https://github.com/square/terraform-provider-an
 
 To manage resources that are already configured in Anomalo you must import them. Both tables and checks implement `terraform import`.
 
-See the plugin documentation for details on each resource. (TODO docs link)
+See the [plugin documentation](https://registry.terraform.io/providers/square/anomalo/latest/docs) for details on each resource.
 
 ### Importing All Checks for a Table
 

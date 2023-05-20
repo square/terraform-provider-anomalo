@@ -31,16 +31,15 @@ Please report issues in Github issues.
 3. Add the following to your `~/.terraformrc` file to instruct Terraform to look at local files for providers with this name:
 ```shell
 dev_overrides {
-   "square/anomalo" = "/Users/jake/go/bin" # TODO update this after deciding on a package name in terraform registry
+   "square/anomalo" = "/Users/jake/go/bin"
 }
 ```
 1. Run `go install .` Terraform will now use your local code.
 
 ### Building
 1. Run `git tag v1.x.x` based on the most recent release in github.
-2. Run `git push origin v1.x.x` 
-3. A github actions workflow should start
-4. Anything for registry? # TODO
+2. Run `git push origin v1.x.x`
+3. A github actions workflow should start. Terraform registry will detect the new release.
 
 ### Generating Documentation
 Use [terraform-plugin-docs](https://github.com/hashicorp/terraform-plugin-docs) to keep documentation in sync with plugin code.
@@ -76,7 +75,7 @@ We manage this at several places where the state of strings enter & exit the pro
 
 - Add a resource or module that tracks all checks for a table.
   - Currently, terraform won't know if a net new check is added to a table outside of terraform
-  - Detailed explanation for this design decision is [here] TODO
+  - This might be a slightly related design decision to the [AWS S3 lifecycle rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#lifecycle-rule) API
 - Create one resource per check type
   - Currently, all check types are implemented via the `anomalo_check` resource with a free-form Params map
   - This would give better type checking, error messages, and validation if we had one resource per check type
