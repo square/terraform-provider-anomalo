@@ -31,7 +31,7 @@ resource "anomalo_table" "VariationsTable" {
 
 resource "anomalo_check" "VariationsGeneratedRecently" {
     check_type      = "TimeColumnNearNow"
-    table_id        = anomalo_table.VariationsTable.id
+    table_id        = anomalo_table.VariationsTable.table_id
     params          = {
         "pass_on_no_data_error"   = "false"
         "priority_level"          = "normal"
