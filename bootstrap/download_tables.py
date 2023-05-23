@@ -2,6 +2,7 @@ import argparse
 import os
 import json
 import logging
+import re 
 
 from python_terraform import Terraform
 import anomalo
@@ -122,7 +123,7 @@ def run(args):
 
     if len(failed_tables) > 0:
         logger.error(f"Failed import the following tables: {failed_tables}")
-    else
+    else:
         logger.info("Successfully imported all tables.")
 
 
