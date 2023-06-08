@@ -96,8 +96,8 @@ func (r *tableResource) Schema(_ context.Context, _ resource.SchemaRequest, resp
 				Validators: []validator.String{
 					// These are example validators from terraform-plugin-framework-validators
 					stringvalidator.RegexMatches(
-						regexp.MustCompile(`^(daily|data_freshness_gated)$`),
-						"Check cadence type must be null, 'daily', or 'data_freshness_gated'",
+						regexp.MustCompile(`^(daily|data_freshness_gated|observability_daily_at_x)$`),
+						"Check cadence type must be null, 'daily', 'data_freshness_gated', or 'observability_daily_at_x'",
 					),
 				},
 				Description: "How often checks should execute on this table. Exclude this attribute (or equivalently, " +
