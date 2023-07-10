@@ -45,6 +45,8 @@ terraform {
 
 You'll need to provide an API token and instance host to authenticate with Anomalo. These can be provided explicitly or in environment variables `ANOMALO_INSTANCE_HOST` and `ANOMALO_API_SECRET_TOKEN`. Running `terraform plan` should output no errors if the plugin connects successfully.
 
+You can get an API key from your organization's Anomalo administrator, or from `Settings -> API Keys` in the Anomalo UI.
+
 
 ## Getting Started
 ### Quick Start
