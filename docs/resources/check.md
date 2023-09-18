@@ -39,6 +39,7 @@ resource "anomalo_check" "VariationsGeneratedRecently" {
 ### Optional
 
 - `check_static_id` (Number) The check ID, persists through updates. Implementation Detail: The Anomalo API implements check updates as a deletion of the old check + creation of a new one. When using this provider, you can ignore that detail by using `static_check_id`. This makes the resource behave like a typical HTTP resource.
+- `ref` (String) A table-scoped, unique, human-readable identifier for the check that persists across updates. This provider relies on check_static_id rather than ref changes to checks, so it's possible to update the ref. If you used a version of this plugin before the attribute was introduced, you may have specified check in the Params. The top level Ref (this attribute) will take precedence if both are provided. Params-based refs may be unsupported in the future.
 - `table_id` (Number) The ID of the table that this check belongs to. This can be specified by referencing the resource object, ex `anomalo_table.<resource_name>.table_id`. It should not be changed after creation.
 
 
