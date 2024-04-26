@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.4.0
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0
-	github.com/square/anomalo-go v1.1.4
+	github.com/square/anomalo-go v1.1.5
 )
 
 require (
