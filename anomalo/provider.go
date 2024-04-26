@@ -44,8 +44,9 @@ func (p Provider) Metadata(_ context.Context, _ provider.MetadataRequest, resp *
 }
 
 type ProviderModel struct {
-	Host  types.String `tfsdk:"host"`
-	Token types.String `tfsdk:"token"`
+	Host         types.String `tfsdk:"host"`
+	Token        types.String `tfsdk:"token"`
+	Organization types.String `tfsdk:"organization"`
 }
 
 func (p Provider) Schema(_ context.Context, _ provider.SchemaRequest, resp *provider.SchemaResponse) {
@@ -60,6 +61,15 @@ func (p Provider) Schema(_ context.Context, _ provider.SchemaRequest, resp *prov
 				Optional:    true,
 				Sensitive:   true,
 				Description: "Your anomalo API token. Ex `j1ThisIsaFake%tokenMxJ`",
+			},
+			"organization": schema.StringAttribute{
+				Optional: true,
+				Description: "Optional - the name of the organization this API key should act within the scope of. " +
+					"Ex. `Square`. The provider _will not_ reset the organization after it finishes executing, " +
+					"because the terraform provider plugin does not make this easy to do efficiently." +
+					"\nNote: We recommend keeping API keys and organizations 1:1. That allows you to exclude this " +
+					"parameter, and avoids the possibility that other users of the API key change it's current " +
+					"organization while your terraform code is executing (or vice versa).",
 			},
 		},
 	}
@@ -144,6 +154,31 @@ func (p Provider) Configure(ctx context.Context, req provider.ConfigureRequest, 
 				"& token. If the error is not clear, please contact the provider developers.\n Error: %s", err.Error()),
 		)
 		return
+	}
+
+	// If passed non-null non-empty organization, attempt to use it.
+	if !(config.Organization.IsNull() || config.Organization.ValueString() == "") {
+		org, err := client.GetOrganizationByName(config.Organization.ValueString())
+		if err != nil || org == nil {
+			resp.Diagnostics.AddError(
+				"Unable to Fetch Organization",
+				fmt.Sprintf("The provider was unable to fetch the provided organization '%s'. If the error is"+
+					" not clear, please contact the provider developers.\n Error: %s",
+					config.Organization.ValueString(), err.Error()),
+			)
+			return
+		}
+
+		changeOrgResp, err := client.ChangeOrganization(int64(org.ID))
+		if err != nil || changeOrgResp.ID != org.ID {
+			resp.Diagnostics.AddError(
+				"Unable to Change Organization",
+				fmt.Sprintf("The provider was unable to change to the provided organization '%s' with ID %d. "+
+					"If the error is not clear, please contact the provider developers.\n Error: %s",
+					config.Organization.ValueString(), org.ID, err.Error()),
+			)
+			return
+		}
 	}
 
 	resp.DataSourceData = &client
