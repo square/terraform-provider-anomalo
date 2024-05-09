@@ -66,8 +66,8 @@ func (p Provider) Schema(_ context.Context, _ provider.SchemaRequest, resp *prov
 				Optional: true,
 				Description: "Optional - the name of the organization this API key should act within the scope of. " +
 					"Ex. `Square`. The provider will not reset the organization after it finishes running. " +
-					"Consumers of this provider can define multiple provider configurations and use Terraform's " +
-					"Resource provider Meta-Argument.",
+					"To use different organizations within the same terraform project, define multiple provider " +
+					"configurations and use Terraform's Resource provider Meta-Argument.",
 			},
 		},
 	}

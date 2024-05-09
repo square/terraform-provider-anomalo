@@ -42,6 +42,7 @@ provider "anomalo" {
 ### Optional
 
 - `host` (String) Your anomalo API host. Ex `https://anomalo.mycompany.com`
+- `organization` (String) Optional - the name of the organization this API key should act within the scope of. Ex. `Square`. The provider will not reset the organization after it finishes running. To use different organizations within the same terraform project, define multiple provider configurations and use Terraform's Resource provider Meta-Argument.
 - `token` (String, Sensitive) Your anomalo API token. Ex `j1ThisIsaFake%tokenMxJ`
 
 
