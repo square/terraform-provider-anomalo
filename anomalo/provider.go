@@ -69,7 +69,11 @@ func (p Provider) Schema(_ context.Context, _ provider.SchemaRequest, resp *prov
 					"because the terraform provider plugin does not make this easy to do efficiently." +
 					"\nNote: We recommend keeping API keys and organizations 1:1. That allows you to exclude this " +
 					"parameter, and avoids the possibility that other users of the API key change it's current " +
-					"organization while your terraform code is executing (or vice versa).",
+					"organization while your terraform code is executing (or vice versa)." +
+					"\nAdvanced users can explore the resource `provider` meta-argument and configure multiple " +
+					"providers. *It is important that these providers use different API keys* to work correctly. " +
+					"Otherwise, the organization of the most recently initialized provider will be used. Configuration" +
+					" order is not guaranteed by the terraform API.",
 			},
 		},
 	}
