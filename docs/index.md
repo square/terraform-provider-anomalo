@@ -55,7 +55,7 @@ provider "anomalo" {
 provider "anomalo" {
   alias="cash-app"
   host = "https://anomalo.example.com"
-  token = "<token>"
+  token = "<aDifferentToken>"
   organization = "cashapp"
 }
 
